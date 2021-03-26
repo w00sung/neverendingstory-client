@@ -1,0 +1,137 @@
+@import 'antd.css';
+
+@keyframes hide {
+  0% {
+    opacity : 1;
+    transform: translate(0,-0);
+  }
+  100% {
+    opacity : 0;
+    transform: translate(0,-69px);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity : 0;
+    transform: translate(0,-69px);
+  }
+  100% {
+    opacity : 1;
+    transform: translate(0,0);
+  }
+}
+
+.ant-menu {
+  background: #222831;
+
+}
+.ant-menu-horizontal > .ant-menu-item:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.ant-menu-horizontal > .ant-menu-item > a:hover {
+  color: #fff;
+}
+
+.menu {
+  padding: 0 20px;
+  border-bottom: solid 1px #e8e8e8;
+  overflow: auto;
+  color: white;
+  background-color: #222831;
+  transform: opacity(0);
+  transition-duration: 1.0s;
+}
+
+.menu:hover{
+  /* opacity: 1; */
+  transform: opacity(1) !important;
+  transform: translateY(0px);
+  opacity: 1.0 !important;
+  /* animation: 0.8s ease-out 0s 1 show */
+  /* transform: opacity(1); */
+  transition-duration: 1.0s;
+}
+
+.menu__logo {
+  width: 150px;
+  float: left;
+}
+
+.menu__logo a {
+  display: inline-block;
+  font-size: 20px;
+  padding: 19px 20px;
+  color: white;
+}
+
+.menu__container .ant-menu-item {
+  padding: 0px 5px;
+  background-color: #222831;
+}
+
+.menu__container .ant-menu-submenu-title {
+  padding: 10px 20px;
+}
+
+.menu__container .ant-menu-item a,
+.menu__container .ant-menu-submenu-title a {
+  padding: 10px 15px;
+  color:#e8e8e8;
+}
+
+.menu__container .ant-menu-horizontal {
+  border-bottom: none;
+  color: #222831;
+}
+
+.menu__container .menu_left {
+  float: left;
+}
+
+.menu__container .menu_rigth {
+  float: right;
+}
+
+.menu__mobile-button {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  margin-top: 8px;
+  display: none !important; /* use of important to overwrite ant-btn */
+  background: black;
+}
+
+.menu_drawer .ant-drawer-body {
+  padding: 0 !important;
+}
+
+/* align header of Drawer with header of page */
+.menu_drawer .ant-drawer-header {
+  padding: 14px 24px !important;
+}
+
+@media (max-width: 767px) {
+  .menu__mobile-button {
+    display: inline-block !important;
+  }
+
+  .menu_left,
+  .menu_rigth {
+    display: none;
+  }
+
+  .menu__logo a {
+    margin-left: -20px;
+  }
+
+  .menu__container .ant-menu-item,
+  .menu__container .ant-menu-submenu-title {
+    padding: 1px 20px;
+  }
+
+  .menu__logo a {
+    padding: 10px 20px;
+  }
+}

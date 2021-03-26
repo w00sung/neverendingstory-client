@@ -1,0 +1,1 @@
+export const localhost = '15.164.48.192';

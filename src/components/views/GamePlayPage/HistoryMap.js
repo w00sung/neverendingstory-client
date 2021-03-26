@@ -53,11 +53,13 @@ function GetSceneInfo(props) {
     } else {
       const cutList = response.data.scene.cutList;
       const lastcut = cutList[cutList.length - 1];
+      console.log("cutlist : ", cutList)
+      console.log("lastcut : ", lastcut)
       setSceneInfo({
         sceneindex: index,
-        background: lastcut.background,
-        name: lastcut.name,
-        script: lastcut.script,
+        background: lastcut?.background,
+        name: lastcut?.name,
+        script: lastcut?.script,
       });
     }
   });

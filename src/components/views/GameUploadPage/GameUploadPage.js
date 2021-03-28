@@ -75,7 +75,7 @@ function GameUploadPage(props) {
         Axios.post("/api/game/uploadfiles", formData, config).then(
             (response) => {
                 if (response.data.success) {
-                    setFilePath(response.data.location);
+                    setFilePath(response.data.url);
                 } else {
                     alert("업로드 실패");
                 }
@@ -167,7 +167,7 @@ function GameUploadPage(props) {
                         <div>
                             <img
                                 className="thumbnail__img"
-                                src={filePath}
+                                src={`http://${LOCAL_HOST}:5000/${filePath}`}
                                 alt="thumbnail"
                             />
                         </div>

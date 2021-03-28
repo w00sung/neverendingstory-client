@@ -10,7 +10,7 @@ function BgmFile({ bgm_audio, bgm, setBgmFile }) {
 
     return (
         <div onClick={onClick_music}>
-            <img src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`} alt="img" />
+            <img src={`http://${LOCAL_HOST}:5000/uploads/music_icon.jpg`} alt="img" />
             {bgm.name}
         </div>
     );

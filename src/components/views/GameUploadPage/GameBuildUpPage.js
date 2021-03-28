@@ -7,6 +7,8 @@ import { LOCAL_HOST } from "../../Config"
 
 const { Title } = Typography;
 
+const config = require('../../../config/key')
+
 const extension = {
     image: [".jpg", ".png", ".jpeg", ".gif"],
     music: [".mp3", ".wav", ".wmv", ".wma", ".flac"],
@@ -81,7 +83,7 @@ function GameBuildUpPage(props) {
                         <div style={{ position: "relative" }}>
                             <img
                                 style={{ width: "20px", height: "20px" }}
-                                src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`}
+                                src={`${config.STORAGE}/music_icon.jpg`}
                                 alt="img not found"
                             />
                             {cur_game.bgm[index].name}
@@ -100,7 +102,7 @@ function GameBuildUpPage(props) {
                         <div style={{ position: "relative" }}>
                             <img
                                 style={{ width: "20px", height: "20px" }}
-                                src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`}
+                                src={`${config.STORAGE}/music_icon.jpg`}
                                 alt="img not found"
                             />
                             {cur_game.sound[index].name}
@@ -153,17 +155,16 @@ function GameBuildUpPage(props) {
 
         for (let i = 0; i < files.length; i++) {
             let formData = new FormData();
-            const config = {
+            const header = {
                 header: { "content-type": "multipart/form-data" }, //content type을 같이 보내줘야한다!
             };
             formData.append("file", files[i]);
             let file_name = files[i].name;
-            Axios.post("/api/game/uploadfile", formData, config).then(
+            console.log("asdfasdfasdfasfd")
+            Axios.post("/api/game/uploadfile", formData, header).then(
                 (response) => {
                     if (response.data.success) {
-                        console.log(response.data)
-
-                        setFilePath(response.data.location);
+                        setFilePath(response.data.url);
 
                         switch (fileState) {
                             case 1:
@@ -171,7 +172,7 @@ function GameBuildUpPage(props) {
                                     gameId: gameId,
                                     character: {
                                         name: file_name,
-                                        image: response.data.location,
+                                        image: `${config.STORAGE}/${response.data.url}`,
                                     },
                                 };
                                 Axios.post(
@@ -179,7 +180,7 @@ function GameBuildUpPage(props) {
                                     characterForm
                                 ).then((response) => {
                                     if (response.data.success) {
-                                        setFilePath(response.data.location);
+                                        setFilePath(response.data.url);
                                     } else {
                                         message.error("캐릭터 업데이트 실패");
                                     }
@@ -190,7 +191,7 @@ function GameBuildUpPage(props) {
                                     gameId: gameId,
                                     background: {
                                         name: file_name,
-                                        image: response.data.location,
+                                        image: `${config.STORAGE}/${response.data.url}`,
                                     },
                                 };
                                 Axios.post(
@@ -198,7 +199,7 @@ function GameBuildUpPage(props) {
                                     backgroundForm
                                 ).then((response) => {
                                     if (response.data.success) {
-                                        setFilePath(response.data.location);
+                                        setFilePath(response.data.url);
                                     } else {
                                         message.error("배경 업데이트 실패");
                                     }
@@ -209,13 +210,13 @@ function GameBuildUpPage(props) {
                                     gameId: gameId,
                                     bgm: {
                                         name: file_name,
-                                        music: response.data.location,
+                                        music: `${config.STORAGE}/${response.data.url}`,
                                     },
                                 };
                                 Axios.post("/api/game/putBgm", bgmForm).then(
                                     (response) => {
                                         if (response.data.success) {
-                                            setFilePath(response.data.location);
+                                            setFilePath(response.data.url);
                                         } else {
                                             message.error("배경음 업데이트 실패");
                                         }
@@ -228,7 +229,7 @@ function GameBuildUpPage(props) {
                                     gameId: gameId,
                                     sound: {
                                         name: file_name,
-                                        music: response.data.location,
+                                        music: `${config.STORAGE}/${response.data.url}`,
                                     },
                                 };
                                 Axios.post(
@@ -236,7 +237,7 @@ function GameBuildUpPage(props) {
                                     soundForm
                                 ).then((response) => {
                                     if (response.data.success) {
-                                        setFilePath(response.data.location);
+                                        setFilePath(response.data.url);
                                     } else {
                                         message.error("효과음 업데이트 실패");
                                     }

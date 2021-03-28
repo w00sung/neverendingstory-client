@@ -1,1 +1,5 @@
-export const localhost = '15.164.48.192';
+export const localhost = 'localhost'
+
+// module.exports = {
+//     localhost = 'localhost'
+// }

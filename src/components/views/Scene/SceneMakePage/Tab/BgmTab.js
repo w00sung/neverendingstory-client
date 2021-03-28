@@ -29,7 +29,7 @@ function BgmTab({ game, setFileQueue, setTypeQueue, setBgmBlobList, bgmBlobList,
                     {(index + 1) % 2 ?
                         <div>
                             <img className="smallBox13"
-                                src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`}
+                                src={`http://${LOCAL_HOST}:5000/uploads/music_icon.jpg`}
                                 alt="img"
                             />
                             {element.name}
@@ -37,7 +37,7 @@ function BgmTab({ game, setFileQueue, setTypeQueue, setBgmBlobList, bgmBlobList,
                         :
                         <div>
                             <img className="smallBox23"
-                                src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`}
+                                src={`http://${LOCAL_HOST}:5000/uploads/music_icon.jpg`}
                                 alt="img"
                             />
                             {element.name}
@@ -56,7 +56,7 @@ function BgmTab({ game, setFileQueue, setTypeQueue, setBgmBlobList, bgmBlobList,
                         <div>
                             <img className="smallBox13"
                                 // style={index == 0 ? { position: "flex" } : { position: "flex" }}
-                                src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`}
+                                src={`http://${LOCAL_HOST}:5000/uploads/music_icon.jpg`}
                                 alt="img"
                             />
                             {bgmBlobNames[index].name}
@@ -65,7 +65,7 @@ function BgmTab({ game, setFileQueue, setTypeQueue, setBgmBlobList, bgmBlobList,
                         <div>
                             <img className="smallBox23"
                                 // style={index == 0 ? { position: "flex" } : { position: "flex" }}
-                                src={`https://neverending.s3.ap-northeast-2.amazonaws.com/original/music_icon.jpg`}
+                                src={`http://${LOCAL_HOST}:5000/uploads/music_icon.jpg`}
                                 alt="img"
                             />
                             {bgmBlobNames[index].name}

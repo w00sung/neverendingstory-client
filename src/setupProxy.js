@@ -1,10 +1,11 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+const config = require('./config/key');
 module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'http://15.164.48.192:80',
+            target: config.SERVER,
             changeOrigin: true,
         })
     );

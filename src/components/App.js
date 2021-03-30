@@ -24,8 +24,9 @@ import './App.css';
 
 const config = require('../config/key');
 // export let socket = io(`http://${LOCAL_HOST}:5000`, {transports : ['websocket']});
-export let socket = io(`https://www.iovar.co.kr`, {transports : ['websocket']});
+export let socket = io(`http://13.124.130.199:5001`, {transports : ['websocket']});
 
+console.log(socket)
 
 window.onpopstate = () => {
   window.location.reload();
